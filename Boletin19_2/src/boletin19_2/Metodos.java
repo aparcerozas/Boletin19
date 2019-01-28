@@ -16,7 +16,7 @@ public class Metodos {
         for(int i=0;i<clase.length;i++){
             Alumno persona = new Alumno();
             persona.setNome(JOptionPane.showInputDialog("Introduzca o nome:"));
-            persona.setNota(Integer.parseInt(JOptionPane.showInputDialog("Introduzca a nota:")));
+            persona.setNota((int)(Math.random()*10+1));
             clase[i] = persona;
         }
         return clase;
@@ -92,7 +92,24 @@ public class Metodos {
         }
     }
     
-    public void notasOrdenadas(){
+    public void notasOrdenadas(Alumno[] clase){
+        int[] notas = new int[clase.length];
+        int aux = 0;
+        for(int i=0;i<clase.length;i++){
+            notas[i]=clase[i].getNota();
+        }
+        for(int i=0;i<notas.length-1;i++){
+            for(int j=0;j<notas.length-1;j++){
+                if(notas[j]>notas[j+1]){
+                aux = notas[j+1];
+                notas[j+1] = notas[j];
+                notas[j] = aux;
+                }
+            }
+        }
+        for(int i=0;i<notas.length;i++){
+            System.out.println(notas[i]);
+        }
         
     }
     
